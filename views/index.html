@@ -9,16 +9,20 @@
 </head>
 
 <body>
-  <header class="container">
-    <h1>The TECH BLOG</h1>
-    <nav>
-      <!-- Conditionally render login or logout links -->
-      {{#if logged_in}}
-      <a href="/dashboard">Dashboard</a> |
-      <button class="no-button" id="logout">Logout</button>
-      {{else}}
-      <a href="/login">Login</a>
-      {{/if}}
+  <header class="nav-bar">
+    <h1 class="container h1">The TECH BLOG</h1>
+    <nav class="'nav-bar">
+
+      <ul>
+        <a href="/"> Home </a>
+        {{#if logged_in}}
+        <a href="/dashboard">Dashboard</a> |
+        <button class="no-button" id="logout">Logout</button>
+        {{else}}
+        <a href="/login">Dashboard</a>
+        <a href="/login">Login</a>
+        {{/if}}
+      </ul>
     </nav>
   </header>
 
@@ -27,7 +31,17 @@
   </main>
 
   <footer>
-    <!-- Footer content goes here -->
+     <div class="footer-content">
+    <p>&copy; 2024 The Tech Blog. All rights reserved.</p>
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </nav>
+  </div>
   </footer>
 
   <!-- Render script for logged in users only -->
