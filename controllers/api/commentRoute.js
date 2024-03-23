@@ -55,15 +55,15 @@ router.post('/', withAuth, async (req, res) => {
   // Route handler is responsible for updating a comment
 router.put('/:id', withAuth, async (req, res) => {
     try {
-      // Find the post by its ID
+      // Find the comment by its ID
       const commentData = await comment.findByPk(req.params.id);
   
-      // If the post doesn't exist, return a 404 Not Found error
+      // If the comment doesn't exist, return a 404 Not Found error
       if (!commentData) {
         return res.status(404).json({ message: 'Comment not found' });
       }
   
-      // Check if the current user is the author of the post
+      // Check if the current user is the author of the comment
       if (commentData.user_id !== req.session.user_id) {
         return res.status(403).json({ message: 'You are not authorized to update this comment' });
       }
