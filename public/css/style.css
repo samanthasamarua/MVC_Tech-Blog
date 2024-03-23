@@ -1,0 +1,80 @@
+/* style.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation bar styles */
+  .Nav-bar {
+    background-color: #231010;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .Nav-bar a {
+    color: #d9ead3;
+    text-decoration: none;
+    font-size: 25px;
+    margin-right: 20px;
+  }
+  
+  .Nav-bar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #231010;
+    padding: 20px;
+  }
+  
+  .container {
+    background-color: #d9ead3; /* Background color */
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 10px; /* Rounded edges */
+  }
+
+  .container h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #231010; /* Text color for h1 */
+  }
+  
+  /* Main content styles */
+  .container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .justify-space-around {
+    justify-content: space-around;
+  }
+  
+  .align-center {
+    align-items: center;
+  }
+  
+  .mt-5 {
+    margin-top: 20px;
+  }
+  
+  /* Additional styling */
+  body {
+    color: #231010;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
