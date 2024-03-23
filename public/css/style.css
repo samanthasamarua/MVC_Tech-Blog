@@ -79,6 +79,111 @@ body {
     text-decoration: underline;
   }
   
+  /* Content Style */
+
+  .content {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content div {
+    margin-bottom: 15px;
+}
+
+.content label {
+    display: block;
+    font-weight: bold;
+}
+
+.content input[type="text"],
+.content input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.content button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.content a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+
+/* Post styles */
+.post {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.post-header {
+  margin-bottom: 10px;
+}
+
+.post-title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.post-author,
+.post-date {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-content {
+  margin-bottom: 15px;
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+}
+
+.post-like-button {
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.post-likes {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
 /* Footer styles */
 footer {
   background-color: #231010; /* Background color */
@@ -117,17 +222,3 @@ footer {
   text-decoration: underline;
 }
 
-.social-links {
-  margin-top: 10px;
-}
-
-.social-icon {
-  color: #d9ead3;
-  font-size: 20px;
-  margin-right: 10px;
-  text-decoration: none;
-}
-
-.social-icon:hover {
-  color: #ffffff; /* Change color on hover */
-}
