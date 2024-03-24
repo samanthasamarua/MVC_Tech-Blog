@@ -1,15 +1,14 @@
 const router = require('express').Router();
 const apiRoutes = require('./api');
-const homeRoutes = require('./homeRoute');
-const dashboardRoutes = require('./dashboardRoute');
+const dashboardRoute = require('./dashboardRoute.js');
 
 
-router.use('/api', apiRoutes);
-router.use('/', homeRoutes);
-router.use('/dashboard', dashboardRoutes);
+router.use('./api', apiRoutes);
+
+router.use('.dashboard', dashboardRoute);
 
 router.use((req, res) => {
-    res.status(404).end();
+    res.send("Wrong Route!");
   });
   
 

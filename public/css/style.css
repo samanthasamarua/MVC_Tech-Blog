@@ -42,7 +42,7 @@ body {
   .container h1 {
     margin: 0;
     font-size: 24px;
-    color: #d9ead; /* Text color for h1 */
+    color: #d9ead3; /* Text color for h1 */
   }
   
   /* Main content styles */
@@ -222,3 +222,69 @@ footer {
   text-decoration: underline;
 }
 
+/* login */
+
+/* style.css */
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Center content */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Form styles */
+.content {
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form input styles */
+.content input[type="text"],
+.content input[type="password"] {
+  width: calc(100% - 22px); /* Adjusted width for border and padding */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da; /* Gray border */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Form button styles */
+.content button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Form button hover effect */
+.content button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Link styles */
+a {
+  display: block;
+  margin-top: 10px;
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+}
+
+/* Link hover effect */
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
