@@ -1,9 +1,6 @@
+<h1>HomePage</h1>
 
 {{#each posts as |post|}}
-
-{{> post-info post }}
-</div>
-
-{{else}}
-<h6 class="pb-4 has-text-centered is-italic">there are currently no posts</h6>
+<h2>{{post.title}} </h2>
+<h3>{{post.text}} </h3>
 {{/each}}

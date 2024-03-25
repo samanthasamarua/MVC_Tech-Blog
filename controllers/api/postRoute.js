@@ -2,18 +2,19 @@ const router = require('express').Router();
 const { post, comment } = require('../../models');
 
 // Route to get all posts
-router.get('/post', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const postData = await post.findAll();
+    console.log("Posts fetched successfully:", postData);
     res.status(200).json(postData);
   } catch (err) {
-    console.error(err);
+    console.error("Error occurred while fetching posts:", err);
     res.status(500).json(err);
   }
 });
 
 // Route to get a specific post by id
-router.get('/post/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const postData = await post.findByPk(req.params.id);
     if (!postData) {
@@ -28,7 +29,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // Route to create a new post
-router.post('/post', async (req, res) => {
+router.post('/create', async (req, res) => {
   try {
     const newPost = await post.create(req.body);
     res.status(201).json(newPost);
@@ -39,7 +40,7 @@ router.post('/post', async (req, res) => {
 });
 
 // Route to update a post by id
-router.put('/post/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const updatedPost = await post.update(req.body, {
       where: {
@@ -54,7 +55,7 @@ router.put('/post/:id', async (req, res) => {
 });
 
 // Route to delete a post by id
-router.delete('/post/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deletedPost = await post.destroy({
       where: {
@@ -69,7 +70,7 @@ router.delete('/post/:id', async (req, res) => {
 });
 
 // Route to create a comment on a post
-router.post('/post/:id/comment', async (req, res) => {
+router.post('/:id/comment', async (req, res) => {
   try {
     const newComment = await comment.create({
       ...req.body,

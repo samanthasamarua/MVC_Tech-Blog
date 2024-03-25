@@ -1,18 +1,35 @@
 const router = require('express').Router();
 const { user } = require('../../models');
-const bcrypt = require('bcrypt');
+
+
+router.get('/users', async (req, res) => {
+  try {
+    const userData = await user.findAll();
+
+    if (!userData || userData.length === 0) {
+      // If no users are found, respond with an appropriate message
+      res.status(404).json({ message: 'No users found' });
+      return;
+    }
+
+    // If users are found, respond with the user data
+    res.status(200).json(userData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 
 // Route for user sign-up
 router.post('/signup', async (req, res) => {
   try {
-    // Hash the password before saving it to the database
-    const hashedPassword = await bcrypt.hash(req.body.password, 8);
-    
-    // Create a new user with the hashed password
+    // Create a new user with the plain text password
     const newUser = await user.create({
       username: req.body.username,
       email: req.body.email,
-      password: hashedPassword
+      password: req.body.password // Pass the plain text password here
     });
 
     // Set the session data to indicate that the user is logged in
@@ -28,6 +45,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+
 // Route for user login
 router.post('/login', async (req, res) => {
   try {
@@ -36,16 +54,16 @@ router.post('/login', async (req, res) => {
 
     // If the user is not found, return an error
     if (!userData) {
-      res.status(400).json({ message: 'Incorrect email or password!' });
+      res.status(400).json({ message: 'No user with that email address! Try again' });
       return;
     }
 
     // Check if the provided password matches the hashed password in the database
-    const isValidPassword = await bcrypt.compare(req.body.password, userData.password);
+    const isValidPassword = userData.checkPassword(req.body.password);
 
     // If the password is invalid, return an error
     if (!isValidPassword) {
-      res.status(400).json({ message: 'Incorrect email or password!' });
+      res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
 
@@ -61,6 +79,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 // Route for user logout
 router.post('/logout', (req, res) => {

@@ -224,67 +224,64 @@ footer {
 
 /* login */
 
-/* style.css */
-
-/* Body styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa; /* Light gray background */
+/* Form container */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Center content */
-.container {
-  max-width: 400px;
-  margin: 0 auto;
+/* Form columns */
+.col-md-6 {
+  width: 50%;
   padding: 20px;
 }
 
-/* Form styles */
-.content {
-  background-color: #ffffff; /* White background */
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Form header */
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
-/* Form input styles */
-.content input[type="text"],
-.content input[type="password"] {
-  width: calc(100% - 22px); /* Adjusted width for border and padding */
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ced4da; /* Gray border */
-  border-radius: 4px;
-  box-sizing: border-box;
+/* Form groups */
+.form-group {
+  margin-bottom: 20px;
 }
 
-/* Form button styles */
-.content button[type="submit"] {
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Form inputs */
+.form-input {
   width: 100%;
   padding: 10px;
-  background-color: #007bff; /* Blue button color */
-  color: #fff; /* White text color */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button */
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-/* Form button hover effect */
-.content button[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.btn:hover {
+  background-color: #0056b3;
 }
 
-/* Link styles */
-a {
-  display: block;
-  margin-top: 10px;
-  color: #007bff; /* Blue link color */
-  text-decoration: none;
-}
-
-/* Link hover effect */
-a:hover {
-  text-decoration: underline; /* Underline on hover */
+/* Additional styles for login and signup forms */
+.login-form,
+.signup-form {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
