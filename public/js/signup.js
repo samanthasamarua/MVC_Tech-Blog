@@ -20,6 +20,10 @@
     }
   };
   
+  document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
+
   document.getElementById('toggle-form-btn').addEventListener('click', function() {
     var loginSection = document.getElementById('login-section');
     var signupSection = document.getElementById('signup-section');
@@ -42,8 +46,4 @@
     document.querySelector('#login-signup-form').addEventListener('submit', loginFormHandler);
   });
   
-  
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
   

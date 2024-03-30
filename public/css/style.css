@@ -323,7 +323,7 @@ label {
         border: 1px solid #ccc; /* Add border around the container */
         padding: 2px; /* Add padding inside the container */
         margin-bottom: 2px; /* Add margin to create space between posts */
-        background-color: #708090; /* Add background color to the container */
+        background-color: #FFB6C1; /* Add background color to the container */
     }
 
     .post-container h2 {
