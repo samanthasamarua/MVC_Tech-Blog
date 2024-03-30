@@ -29,13 +29,21 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route to create a new post
-router.post('/create', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const newPost = await post.create(req.body);
-    res.status(201).json(newPost);
+    // Retrieve the user ID from the session or request object
+    const userId = req.session.userId; // Adjust this based on how the user ID is stored in the session
+    
+    // Create a new post with the user ID included
+    const newPost = await post.create({
+      ...req.body,
+      user_id: req.session.userId, // Include the user ID in the new post data
+    });
+    
+    res.status(200).json(newPost);
   } catch (err) {
     console.error(err);
-    res.status(400).json(err);
+    res.status(500).json({ error: 'Failed to create new post' });
   }
 });
 

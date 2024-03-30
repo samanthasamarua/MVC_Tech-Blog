@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const apiRoutes = require('./api');
-const dashboardRoute = require('./dashboardRoute.js');
 const homepageRoute = require('./homepageRoute.js');
 
 
@@ -12,7 +11,6 @@ router.use((req, res, next) => {
     next(); // Pass control to the next middleware function
 });
 
-router.use('/dashboard', dashboardRoute);
 router.use('/', homepageRoute);
 
 router.use((req, res) => {

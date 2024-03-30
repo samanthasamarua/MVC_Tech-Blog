@@ -4,7 +4,15 @@ const { post, comment, user } = require('../models');
 // Route to get all posts
 router.get('/', async (req, res) => {
     try {
-            const postData = await post.findAll();
+            const postData = await post.findAll({
+              include: [
+              {
+                model: user,
+                attributes: ['username'],
+              },
+              ],
+            });
+
             const posts = postData.map((post)=> post.get({plain:true}))
             console.log(posts)
         res.render('homepage',{
@@ -19,7 +27,24 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
     try {
-        res.render('dashboard')
+      const postData = await post.findAll({
+        where: {
+          userId: req.session.userId
+        },
+        include: [
+        {
+          model: user,
+          attributes: ['username'],
+        },
+        ],
+      });
+
+      const posts = postData.map((post)=> post.get({plain:true}))
+      console.log(posts)
+      res.render('dashboard',{
+      posts
+     });
+  
      
     } catch (err) {
       console.error("Error occurred while fetching posts:", err);
@@ -27,15 +52,33 @@ router.get('/dashboard', async (req, res) => {
     }
   });
 
+router.get('/add', async (req, res) => {
+  try {
+      res.render('add-post')
+    
+  } catch (err) {
+    console.error("Error occurred while fetching posts:", err);
+    res.status(500).json(err);
+  }
+});
   
   router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
-    if (req.session.logged_in) {
-      res.redirect('/homepage');
+    if (req.session.loggedIn ) {
+      res.redirect('/dashboard');
       return;
     }
   
     res.render('login');
+  });
+
+  router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/dashboard');
+      return;
+    }
+  
+    res.render('signup');
   });
 
 module.exports = router;

@@ -45,8 +45,29 @@ const loginFormHandler = async (event) => {
     }
   };
   
-
+  document.getElementById('toggle-form-btn').addEventListener('click', function() {
+    var loginSection = document.getElementById('login-section');
+    var signupSection = document.getElementById('signup-section');
+    var toggleBtn = document.getElementById('toggle-form-btn');
   
+    if (loginSection.style.display === 'none') {
+      loginSection.style.display = 'block';
+      signupSection.style.display = 'none';
+      toggleBtn.textContent = 'Switch to Signup';
+    } else {
+      loginSection.style.display = 'none';
+      signupSection.style.display = 'block';
+      toggleBtn.textContent = 'Switch to Login';
+    }
+  
+    // Remove previous event listener to avoid multiple bindings
+    document.querySelector('#login-signup-form').removeEventListener('submit', loginFormHandler);
+  
+    // Add event listener for the login form submit button
+    document.querySelector('#login-signup-form').addEventListener('submit', loginFormHandler);
+  });
+  
+
   document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);

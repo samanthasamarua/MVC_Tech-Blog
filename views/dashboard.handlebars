@@ -1,4 +1,16 @@
+<h1>Dashboard</h1>
 
-    <h2>Create New Post</h2>
+{{#if posts.length}}
+    <h2>Your Blog Posts:</h2>
+    <ul>
+        {{#each posts as |post|}}
+            <li>{{post.title}}</li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>No blog posts found.</p>
+{{/if}}
 
- 
+<button id="add-btn">Add New Blog Post</button>
+
+<script src="/js/dashboard.js"></script>

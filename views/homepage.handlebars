@@ -1,6 +1,11 @@
-<h1>HomePage</h1>
 
 {{#each posts as |post|}}
-<h2>{{post.title}} </h2>
-<h3>{{post.text}} </h3>
+
+<div class="post-container"></div>
+<h2 class=".post-container h2">{{post.title}} </h2>
+<h3 class=".post-container p">{{post.text}} </h3>
+    <div class="post-info">
+        <span>Date Created: {{post.date_created}}</span>
+    </div>
+</div>
 {{/each}}

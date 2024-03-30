@@ -10,17 +10,18 @@
 
 <body>
   <header class="nav-bar">
-    <h1 class="container h1">The TECH BLOG</h1>
+    <h1 class="title_container h1">The TECH BLOG</h1>
 
 
       <ul>
-        <a href="/"> Home </a>
+        <a class ="nav-btn" href="/"> Home </a>
         {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a> |
+        <a class ="nav-btn" href="/dashboard">Dashboard</a> |
         <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">Dashboard</a>
-        <a href="/login">Login</a>
+        <a class ="nav-btn" href="/login">Dashboard</a>
+        <a class ="nav-btn" href="/login">Login</a>
+        <a class ="nav-btn" href="/login">Logout</a>
         {{/if}}
       </ul>
     </nav>
@@ -33,19 +34,13 @@
   <footer>
      <div class="footer-content">
     <p>&copy; 2024 The Tech Blog. All rights reserved.</p>
-    <nav class="footer-nav">
-      <ul>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-      </ul>
-    </nav>
   </div>
   </footer>
 
-  <!-- Render script for logged in users only -->
+  {{!-- <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
-  {{/if}}
+  {{/if}} --}}
 </body>
 
 </html>
