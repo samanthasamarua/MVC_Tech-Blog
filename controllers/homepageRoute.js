@@ -25,33 +25,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }   
 });
-
-// router.get('/dashboard', withAuth, async (req, res) => {
-//     try {
-//       const postData = await post.findAll({
-//         where: {
-//           user_id: req.session.userId,
-//         },
-//         include: [
-//         {
-//           model: user,
-//           attributes: ['username'],
-//         },
-//         ],
-//       });
-
-//       const posts = postData.map((post)=> post.get({plain:true}))
-//       console.log(posts)
-//       res.render('dashboard');
-  
-     
-//     } catch (err) {
-//       console.error("Error occurred while fetching posts:", err);
-//       res.status(500).json(err);
-//     }
-//   });
-
-  // Prevent non logged in users from viewing the homepage
+// Route to access dashboard
   router.get('/dashboard', async (req, res) => {
     try {
       const postData = await post.findAll({
@@ -68,7 +42,7 @@ router.get('/', async (req, res) => {
       res.render('dashboard', {
         posts,
         // Pass the logged in flag to the template
-        logged_in: req.session.logged_in,
+        loggedin: req.session.loggedin,
       });
     } catch (err) {
       res.status(500).json(err);

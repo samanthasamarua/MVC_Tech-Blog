@@ -2,27 +2,6 @@ const router = require('express').Router();
 const { user } = require('../../models');
 
 
-
-router.get('/users', async (req, res) => {
-  try {
-    const userData = await user.findAll();
-
-    if (!userData || userData.length === 0) {
-      // If no users are found, respond with an appropriate message
-      res.status(404).json({ message: 'No users found' });
-      return;
-    }
-
-    // If users are found, respond with the user data
-    res.status(200).json(userData);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-
-
 // Route for user sign-up
 router.post('/signup', async (req, res) => {
   try {
@@ -35,9 +14,10 @@ router.post('/signup', async (req, res) => {
 
     // Set the session data to indicate that the user is logged in
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.userId = newUser.id;
       req.session.username = newUser.username;
+      req.session.loggedIn = true;
+      
       res.status(200).json(newUser);
     });
   } catch (err) {
@@ -95,3 +75,4 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
+
