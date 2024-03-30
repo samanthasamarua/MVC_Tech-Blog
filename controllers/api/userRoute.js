@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { user } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 router.get('/users', async (req, res) => {
@@ -23,7 +24,7 @@ router.get('/users', async (req, res) => {
 
 
 // Route for user sign-up
-router.post('/signup', async (req, res) => {
+router.post('/signup', withAuth, async (req, res) => {
   try {
     // Create a new user with the plain text password
     const newUser = await user.create({
@@ -47,10 +48,12 @@ router.post('/signup', async (req, res) => {
 
 
 // Route for user login
-router.post('/login', async (req, res) => {
+router.post('/login', withAuth, async (req, res) => {
   try {
     // Find the user by their email address
     const userData = await user.findOne({ where: { email: req.body.email } });
+
+    console.log('userData:', userData);
 
     // If the user is not found, return an error
     if (!userData) {
@@ -59,7 +62,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Check if the provided password matches the hashed password in the database
-    const isValidPassword = userData.checkPassword(req.body.password);
+    const isValidPassword = await userData.checkPassword(req.body.password);
 
     // If the password is invalid, return an error
     if (!isValidPassword) {

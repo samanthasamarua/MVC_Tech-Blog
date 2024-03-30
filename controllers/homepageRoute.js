@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { post, comment, user } = require('../models');
+const withAuth = require('../utils/auth');
+
 
 // Route to get all posts
 router.get('/', async (req, res) => {
@@ -25,11 +27,11 @@ router.get('/', async (req, res) => {
     }   
   });
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
       const postData = await post.findAll({
         where: {
-          userId: req.session.userId
+          user_id: req.session.userId,
         },
         include: [
         {
