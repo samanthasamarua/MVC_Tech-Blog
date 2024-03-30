@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
     }   
   });
 
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try {
       const postData = await post.findAll({
         where: {
@@ -43,9 +43,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
       const posts = postData.map((post)=> post.get({plain:true}))
       console.log(posts)
-      res.render('dashboard',{
-      posts
-     });
+      res.render('dashboard');
   
      
     } catch (err) {
@@ -64,7 +62,7 @@ router.get('/add', async (req, res) => {
   }
 });
   
-  router.get('/login', (req, res) => {
+  router.get('/login', withAuth, (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.loggedIn ) {
       res.redirect('/dashboard');
@@ -74,7 +72,7 @@ router.get('/add', async (req, res) => {
     res.render('login');
   });
 
-  router.get('/signup', (req, res) => {
+  router.get('/signup', withAuth, (req, res) => {
     if (req.session.loggedIn) {
       res.redirect('/dashboard');
       return;
